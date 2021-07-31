@@ -1,0 +1,121 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+div#return_widget_wrap {
+  margin-top: 30px;
+  width: 100%;
+  padding: 10px;
+}
+div#onerma_results__wrap {
+  padding: 0px 10px;
+}
+#onerma_results_tbl,#sales_products_table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#onerma_results_tbl th,
+td,
+#sales_products_table th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #3c763d;
+  display: block;
+  margin: 10px 0px;
+  padding: 5px 15px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  border-left: 3px solid #8eb57e;
+}
+
+.alert-danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #ff312d;
+  display: block;
+  margin: 10px 0px;
+  padding: 5px 15px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  border-left: 3px solid #ffa3a2;
+}
+
+button#openWidget {
+  background: #c1c1c1;
+  color: #333333;
+  padding: 10px 22px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 3px;
+  opacity: .8;
+}
+
+button#openWidget:hover {
+  opacity: 1;
+  transition: .3s;
+}
+select,input[type="checkbox"]{
+  cursor: pointer;
+}
+div#sales_products {
+  margin-top: 31px;
+}
+table#onerma_results_tbl tr th, table#onerma_results_tbl tr td,
+table#sales_products_table tr th, table#sales_products_table tr td {
+  font-size: 14px;
+}
+table#onerma_results_tbl tr th, table#onerma_results_tbl tr td,
+table#sales_products_table tr th, table#sales_products_table tr td {
+  font-size: 14px;
+  color: #444444;
+  font-weight: 500;
+  padding: 5px;
+}
+table#onerma_results_tbl tr th,#sales_products_table tr th {
+  background: #efefef;
+  padding: 8px;
+}
+select#motive,select#sale_ids {
+  padding: 5px;
+  height: 32px;
+  font-size: 14px;
+}
+textarea#mycomment {
+  margin-bottom: 30px;
+}
+button#submit_rma {
+  background: #3c763d42;
+  padding: 10px 33px;
+  color: #656565;
+  border: .5px solid #3c763d5e;
+  opacity: .8;
+}
+button#submit_rma:hover{
+  transition: .3s;
+  opacity: 1;
+}
+input:disabled,select:disabled,textarea:disabled,.disable,button#submit_rma:disabled{
+  border-color: #ddd;
+  color: #909090;
+  opacity: .5;
+  cursor: default;
+}
+button#submit_rma:disabled{
+  background-color: #ddd;
+}
+
+h2.onerma-title {
+  padding: 5px 0px;
+}
+div#onerma_results {
+  padding: 10px 0px;
+  width: 100%;
+}
