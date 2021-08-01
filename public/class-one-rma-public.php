@@ -104,14 +104,15 @@ class One_Rma_Public {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/one-rma-public.js', array( 'jquery' ), $this->version, true );
 		
-		wp_localize_script($this->plugin_name, "get_product_detail", array(
-			'ajaxurl' 	=> admin_url('admin-ajax.php'),
-			'nonce'		=> wp_create_nonce( 'rma_nonce' ),
-			'email'		=> get_user_by( 'ID', get_current_user_id(  ) )->user_email,
-			'url'		=> (!empty(get_option( 'onerma_server_url' ))?get_option( 'onerma_server_url' ):''),
-			'key'		=> (!empty(get_option( 'onerma_user_keys' ))?get_option( 'onerma_user_keys' ):'')
-		));
-
+		if(is_user_logged_in(  )){
+			wp_localize_script($this->plugin_name, "get_product_detail", array(
+				'ajaxurl' 	=> admin_url('admin-ajax.php'),
+				'nonce'		=> wp_create_nonce( 'rma_nonce' ),
+				'email'		=> get_user_by( 'ID', get_current_user_id(  ) )->user_email,
+				'url'		=> (!empty(get_option( 'onerma_server_url' ))?get_option( 'onerma_server_url' ):''),
+				'key'		=> (!empty(get_option( 'onerma_user_keys' ))?get_option( 'onerma_user_keys' ):'')
+			));
+		}
 	}
 
 	function get_self_sale_ids(){
@@ -258,7 +259,11 @@ class One_Rma_Public {
 
 		$output = ob_get_contents();
 		ob_get_clean();
-		return $output;
+		if(is_user_logged_in(  )){
+			return $output;
+		}else{
+			return '';
+		}
 	}
 	
 	function onerma_products_wizard(){
@@ -268,7 +273,11 @@ class One_Rma_Public {
 
 		$output = ob_get_contents();
 		ob_get_clean();
-		return $output;
+		if(is_user_logged_in(  )){
+			return $output;
+		}else{
+			return '';
+		}
 	}
 
 }
