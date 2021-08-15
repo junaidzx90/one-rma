@@ -101,7 +101,7 @@ class One_Rma_Admin {
 	}
 
 	function rma_users_menupage(){
-		add_options_page( 'One RMA Settings', 'One RMA', 'manage_options', 'one-rma', [$this,'onerma_menu_view'] );
+		add_options_page( 'One Devoluciones Settings', 'One Devoluciones', 'manage_options', 'one-rma', [$this,'onerma_menu_view'] );
 
 		// options
 		add_settings_section( 'onerma_settings_section', '', '', 'onerma_settings_page' );
@@ -111,6 +111,9 @@ class One_Rma_Admin {
 
 		add_settings_field( 'onerma_user_keys', 'Api Key', [$this,'onerma_user_keys_cb'], 'onerma_settings_page', 'onerma_settings_section');
 		register_setting( 'onerma_settings_section', 'onerma_user_keys');
+
+		add_settings_field( 'onerma_tirmsconditions', 'Terms & Conditions', [$this,'onerma_tirmsconditions_cb'], 'onerma_settings_page', 'onerma_settings_section');
+		register_setting( 'onerma_settings_section', 'onerma_tirmsconditions');
 	}
 
 	function onerma_server_url_cb(){
@@ -121,11 +124,16 @@ class One_Rma_Admin {
 		echo '<input class="widefat" type="text" placeholder="Api Key" name="onerma_user_keys" value="'.get_option( 'onerma_user_keys' ).'">';
 	}
 
+	function onerma_tirmsconditions_cb(){
+		echo '<textarea class="widefat" name="onerma_tirmsconditions">'.get_option( 'onerma_tirmsconditions' ).'</textarea>';
+		echo '<small><b>HTML Supported.</b></small>';
+	}
+
 	function onerma_menu_view(){
-		echo '<h3>One RMA Settings</h3>';
+		echo '<h3>One Devoluciones Settings</h3>';
 		echo '<hr>';
 
-		echo '<div style="width: 35%" id="onerma">';
+		echo '<div style="width: 50%" id="onerma">';
 
 		echo '<form method="post" action="options.php">';
 		echo '<table class="widefat">';

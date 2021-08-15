@@ -6,15 +6,21 @@ div#return_widget_wrap {
   margin-top: 30px;
   width: 100%;
   padding: 10px;
+  font-family: sans-serif !important;
+  display: none;
 }
 div#onerma_results__wrap {
   padding: 0px 10px;
+  font-family: sans-serif !important;
 }
 #onerma_results_tbl,#sales_products_table {
   border-collapse: collapse;
   width: 100%;
 }
-
+div#rma_form_values label {
+  margin-top: 18px;
+  color: #333333;
+}
 #onerma_results_tbl th,
 td,
 #sales_products_table th,
@@ -23,7 +29,9 @@ td {
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
-
+table#onerma_results_tbl td {
+  width: 16.66%;
+}
 .alert-success {
   background-color: #dff0d8;
   border-color: #d6e9c6;
@@ -77,11 +85,12 @@ table#sales_products_table tr th, table#sales_products_table tr td {
   font-size: 14px;
   color: #444444;
   font-weight: 500;
-  padding: 5px;
+  padding: 12px;
 }
 table#onerma_results_tbl tr th,#sales_products_table tr th {
   background: #efefef;
-  padding: 8px;
+  padding: 8px 15px;
+  width: 10%;
 }
 select#motive,select#sale_ids {
   padding: 5px;
@@ -118,4 +127,126 @@ h2.onerma-title {
 div#onerma_results {
   padding: 10px 0px;
   width: 100%;
+}
+ul.productos_list {
+  padding: 0;
+  list-style: auto;
+}
+td.accordions {
+  padding: 0 !important;
+}
+td.accordions table thead{
+  cursor: pointer;
+}
+td.accordions table tbody{
+  display: none;
+  background-color: #efefef;
+}
+td.accordions table {
+  margin-bottom: 3px;
+}
+.mensajes {
+  padding: 10px;
+}
+.rma_buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.rma_buttons button,.rma_buttons label {
+  width: fit-content;
+}
+label#tirmscondition {
+  color: #706666;
+}
+div#tirmsModal {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: #000000bf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tirms_contents {
+  width: 40%;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 6px;
+}
+h3.tirms_title {
+  padding: 8px !important;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.tiems_body {
+  height: 55vh;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+.tiems_body p{
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.tirms_footer {
+  padding: 15px 0px 0px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+.tirms_footer button {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+  padding: 10px 20px;
+  height: fit-content;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  border-color: transparent;
+}
+button.tirms_accepts{
+  background: #03a9f4  !important;
+  color: #fff  !important;
+}
+button.tirms_cancel{
+  background: transparent !important;
+  color: #656565  !important;
+}
+.tirms_footer button:hover{
+  opacity: .8;
+}
+.tiems_body::-webkit-scrollbar {
+  width: 10px;
+}
+.tiems_body::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+.tiems_body::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+.tiems_body::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+@media only screen and (max-width: 768px) {
+  .tirms_contents{
+    width: 60%;
+  }
+  .rmatable {
+    overflow-x: auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .tirms_contents{
+    width: 80%;
+  }
 }

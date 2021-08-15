@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       One Rma
  * Plugin URI:        https://www.fiverr.com
- * Description:       Integration with RMA module of ONE CRM.
+ * Description:       Integration with Devoluciones module of ONE CRM.
  * Version:           1.0.0
  * Author:            Md Junayed
  * Author URI:        https://www.fiverr.com/junaidzx90
