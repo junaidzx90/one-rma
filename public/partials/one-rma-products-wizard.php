@@ -60,7 +60,7 @@
                                     <td class="product_row">
                                         <input type="hidden" class="product_max" name="product_max" :value="sale.cant">
                                         <input type="hidden" class="product_id" name="product_id" :value="sale.id">
-                                        <input type="number" value="1" class="product_cant" name="product_cant" max="1" :disabled="isDisable">
+                                        <input type="number" :value="sale.cant" class="product_cant" name="product_cant" :min="sale.cant" :max="sale.cant" :disabled="isDisable">
                                     </td>
                                     <td>
                                         <input @change="sale_product_check(event)" type="checkbox" class="sale_product_check">

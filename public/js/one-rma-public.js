@@ -84,39 +84,9 @@ const rma = new Vue({
                             pthis.loading2 = false;
                             if (response !== 'null') {
                                 
-                                let id = '';
-                                let name = '';
-                                let sku = '';
-                                let cant = '';
-
-                                let separetor = ''
-                                jQuery.each(response.data, function (index, values) {
-                                    
-                                    jQuery.each(values, function (index2, value) {
-
-                                        switch (index2) {
-                                            case 'id':
-                                                id += separetor+value 
-                                                break;
-                                            case 'name':
-                                                name += separetor+value 
-                                                break;
-                                            case 'sku':
-                                                sku += separetor+value 
-                                                break;
-                                            case 'cant':
-                                                cant += separetor+value 
-                                                break;
-                                        
-                                            default:
-                                                break;
-                                        }
-                                    });
-                                    separetor = ', '
+                                jQuery.each(response.data, function (index, value) {
+                                    pthis.saleItems.push(value);
                                 });
-                                
-                                let items = {id,name,sku,cant}  
-                                pthis.saleItems.push(items);
 
                             }
                         } else {
@@ -260,14 +230,31 @@ const rma = new Vue({
         jQuery('td.accordions').each(function(){
             var thead = jQuery(this).find('thead');
             var tbody = jQuery(this).find('tbody');
+            var arrow = jQuery(this).find('span.arrowIcon');
 
             tbody.hide();
             thead.on("click", function (e) {
                 jQuery('td.accordions').find('tbody').each(function () {
-                    if(jQuery(this)[0] !== tbody[0])
+                    if (jQuery(this)[0] !== tbody[0]) {
                         jQuery(this).hide();
+                        arrow.css('transform', 'rotate( -90deg ) scaleY(1.5)')
+                    }
                 })
+
+                jQuery('span.arrowIcon').each(function () {
+                    if (jQuery(this)[0] !== tbody[0]) {
+                        jQuery(this).css('transform', 'rotate( -90deg ) scaleY(1.5)')
+                    }
+                })
+                
+                if (tbody.is(':visible')) {
+                    arrow.css('transform', 'rotate( -90deg ) scaleY(1.5)')
+                } else {
+                    arrow.css('transform', 'rotate( 90deg ) scaleY(1.5)')
+                }
+
                 tbody.slideToggle('fast');
+                
             });
         });
     }

@@ -30,7 +30,10 @@ td {
   border-bottom: 1px solid #ddd;
 }
 table#onerma_results_tbl td {
-  width: 16.66%;
+  width: 14.28%;
+}
+table#onerma_results_tbl th:last-child,table#onerma_results_tbl thead td:last-child{
+  text-align: right !important;
 }
 .alert-success {
   background-color: #dff0d8;
@@ -43,7 +46,10 @@ table#onerma_results_tbl td {
   font-size: 14px;
   border-left: 3px solid #8eb57e;
 }
-
+div#rma_form_values {
+  display: flex;
+  flex-direction: column;
+}
 .alert-danger {
   background-color: #f2dede;
   border-color: #ebccd1;
@@ -120,7 +126,10 @@ input:disabled,select:disabled,textarea:disabled,.disable,button#submit_rma:disa
 button#submit_rma:disabled{
   background-color: #ddd;
 }
-
+label.disable {
+  color: #ddd;
+  cursor: default;
+}
 h2.onerma-title {
   padding: 5px 0px;
 }
@@ -155,6 +164,7 @@ td.accordions table {
 }
 .rma_buttons button,.rma_buttons label {
   width: fit-content;
+  cursor: pointer;
 }
 label#tirmscondition {
   color: #706666;
@@ -235,7 +245,22 @@ button.tirms_cancel{
 .tiems_body::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
-
+span.arrowIcon {
+  font-size: 24px;
+  transform: rotate( -90deg ) scaleY(1.5);
+  display: inline-block;
+  color: #666666;
+}
+.mensajes ul {
+    margin: 0;
+    list-style: none;
+}
+.mensajes ul li{
+    padding-bottom: 10px;
+}
+.mensajes ul li:last-child{
+  padding-bottom: 0px;
+}
 @media only screen and (max-width: 768px) {
   .tirms_contents{
     width: 60%;

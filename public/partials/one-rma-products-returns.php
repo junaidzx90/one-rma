@@ -26,7 +26,7 @@
             echo '<h3 class="alerts alert-danger">Error del servidor, inténtalo de nuevo.</h3>';
             return;
         }
-
+        
         if($response && $response->success == true){
             if(!empty($response->data)){
                 $output = '';
@@ -46,6 +46,7 @@
                         $output .= '<th>'.$table_head.'</th>';
                     }
                 }
+                $output .= '<th>#</th>';
 
                 $output .= '</tr>';
                 $output .= '</thead>';
@@ -73,12 +74,11 @@
                     array_push($tbldata, $rows);
                 }
 
-                
                 if(count($tbldata)>0){
                     $mensajes = '';
                     foreach($tbldata as $tblrow){
                         $output .= '<tr>';
-                        $output .= '<td colspan="6" class="accordions">';
+                        $output .= '<td colspan="7" class="accordions">';
                         #=================
                         // ACCORDION TABLE
                         #=================
@@ -91,7 +91,7 @@
 
                         
                         foreach($tblrow as $tblkey => $tblval){
-                            if(is_array($tblval)){
+                            if(is_array($tblval) && $tblkey == 'PRODUCTOS'){
                                 // PRODUCTS ARRAY
                                 $output .= '<td>';
                                 $output .= '<ul class="productos_list">';
@@ -108,7 +108,7 @@
                                 }
                             }
                         }
-
+                        $output .= '<td><span class="arrowIcon">◄</span></td>';
                         $output .= '</tr>';
                         $output .= '</thead>';
 
@@ -117,13 +117,21 @@
                         #===============
                         $output .= '<tbody class="accordion-panel">';
                         $output .= '<tr>';
-                        $output .= '<td colspan="6">';
+                        $output .= '<td colspan="7">';
 
                         #===============
                         // MENSAJES
                         #===============
                         $output .= '<div class="mensajes">';
-                        $output .= ($mensajes)?$mensajes:'No se han encontrado mensajes.';
+                        if($mensajes){
+                            $output .= '<ul>';
+                            foreach($mensajes[0] as $key => $msgs){
+                                $output .= '<li>'.$key.': '.$msgs.'</li>';
+                            }
+                            $output .= '</ul>';
+                        }else{
+                            $output .= 'No se han encontrado mensajes.';
+                        }
                         $output .= '</div>';
                         #===============
                         // MENSAJES
