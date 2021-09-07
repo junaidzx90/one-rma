@@ -114,6 +114,12 @@ class One_Rma_Admin {
 
 		add_settings_field( 'onerma_tirmsconditions', 'Terms & Conditions', [$this,'onerma_tirmsconditions_cb'], 'onerma_settings_page', 'onerma_settings_section');
 		register_setting( 'onerma_settings_section', 'onerma_tirmsconditions');
+
+		add_settings_field( 'onerma_available_return_notice', 'Available Return Notice', [$this,'onerma_available_return_notice_cb'], 'onerma_settings_page', 'onerma_settings_section');
+		register_setting( 'onerma_settings_section', 'onerma_available_return_notice');
+
+		add_settings_field( 'onerma_notice_color', 'Notice Color', [$this,'onerma_notice_color_cb'], 'onerma_settings_page', 'onerma_settings_section');
+		register_setting( 'onerma_settings_section', 'onerma_notice_color');
 	}
 
 	function onerma_server_url_cb(){
@@ -127,6 +133,14 @@ class One_Rma_Admin {
 	function onerma_tirmsconditions_cb(){
 		echo '<textarea class="widefat" name="onerma_tirmsconditions">'.get_option( 'onerma_tirmsconditions' ).'</textarea>';
 		echo '<small><b>HTML Supported.</b></small>';
+	}
+
+	function onerma_available_return_notice_cb(){
+		echo '<textarea class="widefat" name="onerma_available_return_notice">'.get_option( 'onerma_available_return_notice' ).'</textarea>';
+	}
+
+	function onerma_notice_color_cb(){
+		echo '<input type="color" name="onerma_notice_color" value="'.get_option( 'onerma_notice_color','#ff8400' ).'">';
 	}
 
 	function onerma_menu_view(){

@@ -72,9 +72,21 @@ button#openWidget {
   opacity: .8;
 }
 
+.returnable_alerts {
+  margin: 40px 0px 0px !important;
+  letter-spacing: 1px;
+  font-family: sans-serif !important;
+  font-size: 16px;
+  border: 1px solid;
+  padding: 14px;
+}
+.returnable_alerts p {
+  margin: 0;
+}
 button#openWidget:hover {
   opacity: 1;
   transition: .3s;
+  user-select: none;
 }
 select,input[type="checkbox"]{
   cursor: pointer;

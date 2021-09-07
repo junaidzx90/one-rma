@@ -113,7 +113,7 @@ class One_Rma_Public {
 					}
 	
 					$rest_url = $server_url.PRODUCT_ENDPOINT.$api_key.'?id='.$id;
-
+					
 					$response = wp_remote_get( $rest_url, ['method' => 'GET'] );
 					$results = wp_remote_retrieve_body($response);
 

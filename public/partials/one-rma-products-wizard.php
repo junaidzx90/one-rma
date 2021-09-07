@@ -38,6 +38,13 @@
                 <img src="<?php echo plugin_dir_url( dirname(__FILE__) ).'img/load.svg' ?>" alt="loader-img">
             </div>
 
+            <?php
+            $notice_color = get_option( 'onerma_notice_color' )?get_option( 'onerma_notice_color' ):'#ff8400';
+            ?>
+
+            <div style="color: <?php echo $notice_color ?>" v-if="returnable_notice" class="returnable_alerts">
+                <p><?php _e(get_option( 'onerma_available_return_notice' )) ?></p>
+            </div>
         
             <div v-if="salesProducts" id="sales_products">
                 <div id="rma_form_values">

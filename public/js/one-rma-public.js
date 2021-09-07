@@ -11,6 +11,7 @@ const rma = new Vue({
         selects: [],
 
         salesProducts: false,
+        returnable_notice: false,
         saleItems: [],
         isDisable: true,
         isTirms: true,
@@ -43,7 +44,8 @@ const rma = new Vue({
                             for (let i = 0; i < dataLen; i++) {
                                 let saleId = response.data[i]['Sale']['id'];
                                 let select = response.data[i]['Sale']['select'];
-                                let sdata = { saleId, select }
+                                let returnable = response.data[i]['Sale']['available_for_return'];
+                                let sdata = { saleId, select, returnable }
                                 pthis.selects.push(sdata);
                                 pthis.buttonVisible = false;
                                 pthis.isVisible = true;
@@ -61,8 +63,27 @@ const rma = new Vue({
         },
         select_sale_product: function (e) {
             let pthis = this;
-            if (e.target.value !== '-1') {
-                let sale_id = e.target.value;
+            let sale_id = e.target.value;
+            let get_data = true
+
+            this.selects.forEach(elm => {
+                if (elm.saleId == sale_id) {
+                    if (elm.returnable == false) {
+                        this.loading2 = true;
+                        get_data = false
+                        this.salesProducts = false;
+                        
+                        setTimeout(() => {
+                            this.loading2 = false;
+                            this.returnable_notice = true
+                        }, 500);
+
+                        return false
+                    }
+                }
+            })
+
+            if (e.target.value !== '-1' && get_data) {
                 jQuery.ajax({
                     type: "get",
                     url: get_product_detail.ajaxurl,
@@ -75,11 +96,11 @@ const rma = new Vue({
                     beforeSend: () => {
                         pthis.loading2 = true;
                         pthis.salesProducts = false;
+                        pthis.returnable_notice = false
                         pthis.saleItems = []
                     },
                     success: function (response) {
                         if (typeof response === "object" && response !== null) {
-
                             pthis.salesProducts = true;
                             pthis.loading2 = false;
                             if (response !== 'null') {
@@ -96,6 +117,7 @@ const rma = new Vue({
                 });
             } else {
                 pthis.salesProducts = false;
+                pthis.returnable_notice = false
             }
         },
         sale_product_check: function (e) {
