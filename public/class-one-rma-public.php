@@ -62,7 +62,7 @@ class One_Rma_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/one-rma-public.css', array(), '0.1', 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/one-rma-public.css', array(), '0.2', 'all' );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class One_Rma_Public {
 
 		wp_enqueue_script( 'md5', plugin_dir_url( __FILE__ ) . 'js/md5.min.js', array( 'jquery' ), $this->version, false );
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/one-rma-public.js', array( 'jquery' ), '0.1', true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/one-rma-public.js', array( 'jquery' ), '0.2', true );
 		
 		if(is_user_logged_in(  )){
 			wp_localize_script($this->plugin_name, "get_product_detail", array(
